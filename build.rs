@@ -11,13 +11,20 @@ pub fn main() {
     let mut header = PathBuf::from(HEADERS_DIR);
     header.push("wrapper.h");
 
-    //println!("cargo:rustc-link-lib=static=ittnotify");
-    println!("cargo:rustc-flags= -L intel_headers/test_headers");
-    println!("cargo:rustc-link-lib=static=test");
+    //println!("{}{}", "cargo:rustc-link-search=", HEADERS_DIR);
+    println!("{} {}", "cargo:rustc-flags= -L", HEADERS_DIR);
+    println!("cargo:rustc-link-lib=static=ittnotify");
 
     let bindings = bindgen::Builder::default()
-        //.header(header.to_str().unwrap())
-        .header("intel_headers/test_headers/test.h")
+        .header(header.to_str().unwrap())
+		    .layout_tests(false)
+        .generate_comments(false)
+		    .prepend_enum_name(false)
+		    .rustfmt_bindings(true)
+        .rustfmt_configuration_file(None)
+        //.whitelist_function(".*pause.*")
+        //.whitelist_type(".*pause.*")
+        //.whitelist_var(".*pause.*")
         .generate()
         .expect("Unable to generate bindings");
 
@@ -26,5 +33,4 @@ pub fn main() {
     bindings
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
-
 }
