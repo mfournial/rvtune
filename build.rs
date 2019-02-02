@@ -12,7 +12,8 @@ pub fn main() {
     header.push("wrapper.h");
 
     //println!("cargo:rustc-link-lib=static=ittnotify");
-    println!("cargo:rustc-link-lib=test");
+    println!("cargo:rustc-flags= -L intel_headers/test_headers");
+    println!("cargo:rustc-link-lib=static=test");
 
     let bindings = bindgen::Builder::default()
         //.header(header.to_str().unwrap())
