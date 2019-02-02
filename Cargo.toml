@@ -3,5 +3,7 @@ name = "rvtune"
 version = "0.1.0"
 authors = ["Mayeul Fournial <mfournial@outlook.com>"]
 
-[dependencies]
+[build-dependencies]
 bindgen = "0.47.1"
+
+[dependencies]
