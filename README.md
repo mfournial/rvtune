@@ -54,3 +54,10 @@ This is the output of `nm libittnotify.so | grep "pause"`. Not very promising if
 0000000000000006 T ittnotify_mp_itt_pause_
                  U __itt_pause_ptr__3_0
 ```
+
+I built manually the official IntelSEAPI and after installing it I got the same problems, in detail:
+```
+nm /opt/intel/lib/libittnotify64.a | grep "pause"
+00000000000036d0 t __itt_pause_init_3_0
+0000000000000440 D __itt_pause_ptr__3_0
+```
