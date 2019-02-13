@@ -11,7 +11,6 @@ pub fn main() {
     let mut header = PathBuf::from(HEADERS_DIR);
     header.push("wrapper.h");
 
-    //println!("{}{}", "cargo:rustc-link-search=", HEADERS_DIR);
     println!("{} {}", "cargo:rustc-flags= -L", HEADERS_DIR);
     println!("cargo:rustc-link-lib=static=ittnotify");
 
