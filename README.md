@@ -1,4 +1,4 @@
-# Simple VTune control for Rust
+# Simple Intel SEAPI bindings for Rust
 
 The goal of this library is to have a minimalistic control wrapper for using vtune with rust code to be able to:
 * Create domains
@@ -44,3 +44,13 @@ println!("cargo:rustc-link-lib=static=test"); // with static
 ```
 
 :arrow_right: Can include for now the compiled `libittnotify.a` file and later on we can imagine submoduling the official intel repo and building the library in the `build.rs` stage automatically.
+
+## Limitations
+
+This is the output of `nm libittnotify.so | grep "pause"`. Not very promising if we want to use the `pause` function (lowercase indicates hidden functions).
+```
+0000000000002870 t __itt_pause_init_3_0
+0000000000000120 D __itt_pause_ptr__3_0
+0000000000000006 T ittnotify_mp_itt_pause_
+                 U __itt_pause_ptr__3_0
+```
