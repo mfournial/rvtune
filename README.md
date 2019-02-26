@@ -7,6 +7,8 @@ The goal of this library is to have a minimalistic control wrapper for using vtu
   * Name
   * Begin / End
   
+**:warning: This is a WIP. Documentation will likely be wrong / not work for you.**
+
 ## Usage
 
 ### Shared library
