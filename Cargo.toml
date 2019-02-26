@@ -2,8 +2,11 @@
 name = "rvtune"
 version = "0.1.0"
 authors = ["Mayeul Fournial <mfournial@outlook.com>"]
+build = "build.rs"
+description = "Rust binding for the Intel FFI SEAPI for profiling"
 
 [build-dependencies]
 bindgen = "0.47.1"
 
 [dependencies]
+libc = "^0.2"
